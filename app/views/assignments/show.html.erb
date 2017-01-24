@@ -1,0 +1,11 @@
+<%= @assignment.name %>
+<div id="image-wrapper" >
+	<div id="new-div-wrapper"></div>
+	<div id="assignment-divider-wrapper">
+		<% 1000.times do |i| %>
+			<div id="d<%= i %>" class="assignment-divider"></div>
+		<% end %>
+	</div>
+	<img id="assignment-image" src="<%= @assignment.image.url %>">
+</div>
+<div style="height: 200px"></div>

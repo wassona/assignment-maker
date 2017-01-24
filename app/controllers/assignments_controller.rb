@@ -6,7 +6,7 @@ class AssignmentsController < ApplicationController
 			puts
 			puts "success!"
 			puts
-			redirect_to root_path, notice: "Assignment created!"
+			redirect_to @assignment, notice: "Assignment created!"
 		else
 			puts
 			puts "failure"
@@ -14,6 +14,12 @@ class AssignmentsController < ApplicationController
 			render "home/index"
 		end
 	end
+
+	def show
+		@assignment = Assignment.find params[:id]
+	end
+
+
 
 
 	private
