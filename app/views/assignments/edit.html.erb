@@ -1,0 +1,15 @@
+<%= form_for @assignment do |f| %>
+	<%= f.text_field :name, placeholder: @assignment.name %>
+	<div id="image-wrapper" >
+		<div id="new-div-wrapper"></div>
+		<div id="assignment-divider-wrapper">
+			<% 1000.times do |i| %>
+				<div id="d<%= i %>" class="assignment-divider"></div>
+			<% end %>
+		</div>
+		<img id="assignment-image" src="<%= @assignment.image.url %>">
+	</div>
+	<%= f.hidden_field :label_data, id: "labelData" %>
+	<button id="assignment-submit-button" >Hello!</button>
+<% end %>
+<div style="height: 200px"></div>

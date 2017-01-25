@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
 root 'home#index'
 
+post '/assignments/:id' => 'assignments#enter_answers'
+
 resources :assignments
 
 end

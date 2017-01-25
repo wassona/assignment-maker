@@ -1,10 +1,14 @@
-window.onload = function() {
+
+document.addEventListener('DOMContentLoaded', function() {
 	console.log("window loaded")
 
 	document.querySelectorAll('.assignment-divider').forEach(function(div){
 		div.addEventListener('click', dividerClick, false);
-
 	});
+
+	if(document.querySelector('#assignment-submit-button')){
+		document.querySelector('#assignment-submit-button').addEventListener('click', submitAssignment, false);
+	};
 
 	function dividerClick(e){
 		var newDiv = document.createElement('div'),  // element to make resizable
@@ -13,13 +17,14 @@ window.onload = function() {
 			parent = e.target.parentNode,
 			parentHeight = window.getComputedStyle(parent).height,
 			startY, startHeight;
+
+		
 		
 
 		newDiv.className = "auto-label";
 		resizer.className = 'resizer';
 		remover.className = 'auto-label-remover';
 		parent.appendChild(newDiv);
-		console.log(e.target.offsetTop/parseInt(parentHeight));
 		newDiv.style.top = (e.target.offsetTop/parseInt(parentHeight))*100 + "%";
 		newDiv.addEventListener('click', init, false);
 
@@ -47,6 +52,7 @@ window.onload = function() {
 		function stopDrag(e) {
 		    document.documentElement.removeEventListener('mousemove', doDrag, false);
 		    document.documentElement.removeEventListener('mouseup', stopDrag, false);
+
 		}
 
 		function end(){
@@ -60,7 +66,31 @@ window.onload = function() {
 			parent.removeChild(newDiv);
 		}
 
+
+
+
+	}
+
+	function submitAssignment(){
+
+		let result = [];
+
+		function toPercent(h) {
+			return ((((parseFloat(h) / parseFloat(window.getComputedStyle(
+				document.getElementById('assignment-image')
+				).height))) * 100 ) + "%")
+		}
+
+		document.querySelectorAll('.auto-label').forEach(function(div, index){
+			divHeight = toPercent(window.getComputedStyle(div).height);
+
+			result.push({ top: div.style.top, height: divHeight});
+		});
+
+		document.querySelector('#labelData').setAttribute('value', JSON.stringify(result));
+
 	}
 
 
-}
+})
+

@@ -15,7 +15,7 @@
 	border: 1px solid black;
 }
 
-.assignment-divider {
+.assignment-divider, .active-assignment-divider {
 	width: 100%;
 	height: .1%;
 	background-color: rgb(255,150,0);
@@ -40,8 +40,8 @@
 
 .resizer { 
 	width: 100%;
-	height: 10px; 
-	background: blue;
+	height: 1em; 
+	background: rgba(0,0,255,.4);
 	position:absolute; 
 	right: 0; 
 	bottom: 0; 
@@ -51,10 +51,10 @@
 .auto-label {
 	height: 5%;
 	width: 100%;
-	background-color: gold;
-	opacity: .2;
+	background-color: rgba(255,195,55,.2);
 	position: absolute;
 	z-index: 3;
+	cursor: pointer;
 }
 
 .auto-label-remover {
@@ -64,4 +64,25 @@
 	position:absolute; 
 	right: 0; 
 	top: 0; 
+}
+
+
+
+
+
+
+
+
+.auto-input {
+	background-color: white;
+	position: absolute;
+	right: 0;
+	top: 30%;
+	height: 1em;
+	width: 15em;
+	opacity: 0;
+}
+
+.auto-input:focus {
+	opacity: 1;
 }
