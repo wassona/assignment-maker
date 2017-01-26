@@ -2,6 +2,7 @@ class AssignmentsController < ApplicationController
 
 	def create
 		@assignment = Assignment.new(assignment_params)
+		
 		if @assignment.save!
 			puts
 			puts "success!"
@@ -36,6 +37,11 @@ class AssignmentsController < ApplicationController
 
 
 	def enter_answers
+		@assignment = Assignment.find params[:id]
+
+		@assignment.createSubmissions answer_params, params[:name]
+
+		redirect_to root_path
 
 	end
 

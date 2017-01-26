@@ -5,6 +5,7 @@
 
 <%= form_for @result do |f| %>
 	<%= @assignment.name %>
+	<input name="name" placeholder="Write your name here">
 	<div id="image-wrapper" >
 		<div id="auto-label-wrapper">
 			<div id="new-div-wrapper"></div>
@@ -13,7 +14,7 @@
 					<div id="d<%= i %>" class="active-assignment-divider"></div>
 				<% end %>
 			</div>
-			<img id="assignment-image" src="<%= @assignment.image.url %>">
+			<img id="assignment-image" src="<%= @assignment.image.url(:regular) %>">
 		</div>
 	</div>
 	<button id="result-submit-button" >Submit!</button>
