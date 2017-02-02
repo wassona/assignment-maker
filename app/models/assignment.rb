@@ -1,16 +1,25 @@
 class Assignment < ApplicationRecord
 	has_attached_file :image, styles: { regular: ['100000x100000>', :png]}, 
-		convert_options: { regular: "-density 96 -depth 8 -quality 85" }
+		source_file_options: { regular: "-density 96 -depth 8 -quality 85" },
+		convert_options: { regular: "-posterize 3"}
 
 
 	validates_attachment :image, content_type: { content_type: ["image/png", "application/pdf"] }
 
 
 	has_many :answers
+	belongs_to :instructor, class_name: 'User', foreign_key: 'user_id'
+	has_many :courses, through: :course_assignments
+	has_many :course_assignments
+	has_many :students, -> { distinct }, through: :answers, source: :user 
 
-	def createSubmissions hash, student_name
+	def createSubmissions hash, student_name, user
 		hash.each do |a|
-			self.answers.create submission: hash[a], student_name: student_name
+			self.answers.create(
+					submission: hash[a], 
+					student_name: student_name, 
+					user_id: user.id
+				)
 		end
 	end
 

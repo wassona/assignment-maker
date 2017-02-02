@@ -1,34 +1,59 @@
 class AssignmentsController < ApplicationController
 
+	def index
+		@assignment = Assignment.new
+		@assignments = current_user.assignments
+	end
+
+	def new
+		@assignment = Assignment.new
+		@user = current_user
+	end
+
 	def create
-		@assignment = Assignment.new(assignment_params)
+		@assignment = current_user.assignments.new(assignment_params)
 		
 		if @assignment.save!
-			puts
-			puts "success!"
-			puts
 			render :edit, notice: "Assignment created!"
 		else
-			puts
-			puts "failure"
-			puts
-			render "home/index"
+			render "/home/index"
 		end
 	end
 
 	def edit
+		@assignment = Assignment.find params[:id]
+	end
+
+	def destroy
+		@assignment = Assignment.find params[:id]
+		if current_user == @assignment.instructor
+			@assignment.destroy
+			redirect_to root_path, notice: "Assignment deleted"
+		else
+			redirect_to root_path, alert: "You do not have permission to delete that assignment."
+		end
+	end
+
+	def take
+		@assignment = Assignment.find params[:id]
+
+		if current_user != @assignment.instructor
+			redirect_to root_path, alert: "You do not have access to that assignment."
+		end
 	end
 
 	def show
 		@assignment = Assignment.find params[:id]
-		@result = "string"
+		if @assignment.answers != []
+			@check_id = @assignment.answers.first.user.id
+		end
 	end
 
 
 	def update
 		@assignment = Assignment.find params[:id]
 
-		if @assignment.update(assignment_params)
+		if current_user == @assignment.instructor && @assignment.update(assignment_params)
 			redirect_to @assignment, notice: "Assignment created!"
 		else
 			render @assignment
@@ -39,7 +64,7 @@ class AssignmentsController < ApplicationController
 	def enter_answers
 		@assignment = Assignment.find params[:id]
 
-		@assignment.createSubmissions answer_params, params[:name]
+		@assignment.createSubmissions answer_params, params[:name], current_user
 
 		redirect_to root_path
 

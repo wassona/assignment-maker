@@ -1,0 +1,122 @@
+.grid-header {
+	padding-top: 1em;
+	padding-left: 1em;
+	width: 100%;
+}
+
+.page-header {
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-bottom: 1em;
+	width: 100%;
+}
+
+.content-width {
+	position: relative;
+	width: 90%;
+	margin: 0 auto;
+
+}
+
+div > div > div > div.mdl-card {
+	width: 100%;
+}
+
+
+
+a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.mdl-button--custom-width {
+	width: 31%;
+	min-width: 0;
+	padding: 0;
+}
+
+div.mdl-card__actions.mdl-card--border > a.mdl-button--custom-center {
+	margin: 0 auto;
+	width: 80%;
+	height: 100%;
+	display: block;
+
+}
+
+.md-24 {
+	font-size: 24px;
+}
+
+div > div.mdl-card__actions.mdl-card--border > a > i.md-36 {
+	font-size: 36px;
+}
+
+div > div.mdl-card__actions.mdl-card--border > a > i.md-48 {
+	font-size: 48px;
+}
+
+.center {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.center-button {
+	width: 40px;
+	margin: 0 auto;
+}
+
+.padding-1 {
+	padding: 1em;
+}
+
+.mdl-js-button--cancel-account {
+	transition: all 2s;
+}
+
+.mdl-link--no-styling {
+	color: black;
+	text-decoration: none;
+}
+
+.mdl-link--no-styling:hover {
+	text-decoration: underline;
+}
+
+
+
+.mdl-button--file input {
+    cursor: pointer;
+    height: 100%;
+    right: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 300px;
+    z-index: 4;
+}
+
+
+.mdl-textfield--file .mdl-textfield__input {
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+}
+
+.mdl-textfield--file .mdl-button--file {
+    right: 0;
+}
+
+#uploadFile {
+	cursor: pointer;
+}
+
+.small-tool-container {
+	width: 350px;
+	margin: 2em auto;
+	padding: 1em;
+	text-align: center;
+}
+
+
+.mdl-chip-bank {
+	width: 90%;
+	min-height: 80px;
+	border-radius: 16px;
+	margin: 0 auto;
+	padding: 3px;
+	margin-bottom: 2em;
+}

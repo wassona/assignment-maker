@@ -1,3 +1,9 @@
+<% if @assignment.label_data %>
+	<script>
+		let labelData = JSON.parse(<%= raw @assignment.label_data.to_json %>);
+	</script>
+<% end %>
+
 <%= form_for @assignment do |f| %>
 	<%= f.text_field :name, placeholder: @assignment.name %>
 	<div id="image-wrapper" >

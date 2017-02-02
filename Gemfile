@@ -57,4 +57,5 @@ gem 'paperclip'
 
 gem 'grim'
 
+gem 'devise'
 

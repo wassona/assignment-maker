@@ -1,0 +1,19 @@
+<h4 class="mdl-color-text--primary">Create a new assignment:</h4>
+<%= form_for @assignment, :html => { :multipart => true } do |f| %>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field" >
+		<%= f.text_field :name, class: "mdl-textfield__input", tabindex: "1"%>
+		<%= f.label :name, class: "mdl-textfield__label" %>
+	</div><br/>
+
+	  <div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+		
+
+		<input class="mdl-textfield__input" placeholder="File" type="text" id="uploadFile" readonly/>
+	    <div id="uploadBtnDiv" class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file" tabindex="2">
+	      <i class="material-icons">attach_file</i><input accept=".png, .pdf" name="assignment[image]" type="file" id="uploadBtn">
+	    </div>
+	</div><br/>
+
+	<%= f.submit "Create", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary", tabindex: "3" %>
+
+<% end %>

@@ -1,0 +1,25 @@
+<div class="mdl-color--blue-grey-100 relative">
+
+<h3 class="grid-header">Assignments in this course:</h3>
+<div class="padding-1">
+	<div class="mdl-color--deep-purple-100 mdl-chip-bank">
+		<% @course.assignments.each do |a| %>
+			<div class="mdl-chip mdl-chip--deletable">
+			    <span class="mdl-chip__text"><%= a.name %></span>
+			    <button type="button" class="mdl-chip__action"><i class="material-icons">cancel</i></button>
+			</div>
+		<% end %>
+
+	</div>
+	<div style="text-align: center; width: 100%">
+	<button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+  		Add Assignment
+	</button>
+	</div>
+
+</div>
+
+
+<%= render 'assignment_selection_modal' %>
+
+</div>

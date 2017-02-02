@@ -1,0 +1,47 @@
+<h2>Edit <%= @user.to_s.humanize %></h2>
+
+<%= form_for(@user, url: registration_path(@user), html: { method: :put }) do |f| %>
+
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+    <%= f.email_field :email, autofocus: true, class: "mdl-textfield__input" %>
+    <%= f.label :email, class: "mdl-textfield__label" %>
+    <span class="mdl-textfield__error">Please include an @ in the email address.</span>
+  </div>
+
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+    <%= f.password_field :password, autocomplete: "off", class: "mdl-textfield__input", pattern: "^.{5,}$" %>
+    <label class="mdl-textfield__label" >Change Password</label>
+    <span class="mdl-textfield__error">Leave field blank if you don't want to change your password</span>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "mdl-textfield__input", pattern: "^.{5,}$" %>
+    <label class="mdl-textfield__label" >New Password Confirmation</label>
+    <span class="mdl-textfield__error">Leave field blank if you don't want to change your password</span>
+
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+    <%= f.password_field :current_password, autocomplete: "off", class: "mdl-textfield__input" %>
+    <%= f.label :current_password, class: "mdl-textfield__label" %>
+
+  </div>
+
+  <div class="actions">
+
+
+    <%= f.submit "Update", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %></p>
+
+<%= link_to "Back", :back %>

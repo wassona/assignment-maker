@@ -1,0 +1,24 @@
+<div class="grid">
+	<div class="row">
+		 <div class="cell">
+			Student:		
+		 </div>
+		 <% @assignment.answers.where(["user_id = ?", @check_id]).each_with_index do |a, i| %>
+			 <div class="cell">
+					Question <%= i + 1 %>
+				</div>
+	      <% end %>
+	</div>
+	<% @assignment.students.each do |s| %>
+		 <div class="row">
+			<div class="cell">
+					<%= s.email %>
+				</div>
+			 <% @assignment.answers.where(["user_id = ?", s.id]).each do |a| %>
+				 <div class="cell">
+					 <%= a.submission %>
+				 </div>
+			 <% end %>
+		 </div>
+	<% end %>
+</div>

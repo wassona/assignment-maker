@@ -26,7 +26,7 @@
 	opacity: .5;
 }
 
-#assignment-divider-wrapper {
+#assignment-divider-wrapper, #active-assignment-divider-wrapper {
 	position: absolute;
 	height: 100%;
 	width: 100%;

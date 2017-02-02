@@ -1,0 +1,47 @@
+<div class="mdl-color--blue-grey-100">
+	<a class="mdl-link--no-styling" href="<%= assignments_path %>"><h3 class="grid-header">My Assignments:</h3></a>
+	<div class="mdl-grid mdl-grid--custom-width">
+		<% current_user.assignments.each do |c| %>
+			<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+				<div class="mdl-card mdl-color--blue-grey mdl-shadow--2dp">
+				  <div class="mdl-card__title">
+				    <h4 class='mdl-color-text--deep-purple-100'>
+				      Assignment:<br>
+				      <%= c.name %>
+				    </h4>
+				  </div>
+				  <div class="mdl-card__actions mdl-card--border">
+
+				    <a href="<%= assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    	<i class="material-icons mdl-color-text--deep-purple-100">find_in_page</i>
+				    </a>
+				    <a href="<%= edit_assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    	<i class="material-icons mdl-color-text--deep-purple-100">build</i>
+				    </a>
+				    <a href="<%= delete_assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    	<i class="material-icons mdl-color-text--deep-purple-100">delete_forever</i>
+				    </a>
+
+				  </div>
+				</div>
+			</div>
+		<% end %>
+		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
+			<div class="mdl-card mdl-shadow--2dp mdl-color--deep-purple">
+			  <div class="mdl-card__title">
+			    <h4 class="center mdl-color-text--blue-grey">
+			      Create New Assignment
+			    </h4>
+			  </div>
+			  <div class="mdl-card__actions mdl-card--border">
+			  	<br/>
+			    <a href="<%= new_assignment_path %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center">
+			    	<i class="material-icons md-48 mdl-color-text--blue-grey">note_add</i>
+			    </a>
+
+			    
+			  </div>
+			</div>
+		</div>
+	</div> 
+</div>

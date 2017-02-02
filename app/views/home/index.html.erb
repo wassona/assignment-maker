@@ -1,10 +1,24 @@
-<%= form_for @assignment, :html => { :multipart => true } do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<%= f.label :image %>
-	<%= f.file_field :image %>
-	<%= f.submit %>
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+      <a href="#instructor-panel" class="mdl-tabs__tab is-active">Instructor View</a>
+      <a href="#student-panel" class="mdl-tabs__tab">Student View</a>
+      <a href="#account-panel" class="mdl-tabs__tab">My Account</a>
+  </div>
 
-<% end %>
+  <div class="mdl-tabs__panel is-active content-width" id="instructor-panel">
+
+    <%= render '/courses/course_card_display' %>
+
+    <%= render '/assignments/assignment_card_display' %>
+
+  </div>
+  <div class="mdl-tabs__panel content-width" id="student-panel">
+    <%= render partial: 'student' %>
+  </div>
+  <div class="mdl-tabs__panel content-width mdl-color--blue-grey-100 padding-1" id="account-panel">
+    <%= render partial: 'account' %>
+  </div>
+</div>
+
 
 

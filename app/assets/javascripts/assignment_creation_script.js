@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.querySelector('#assignment-submit-button').addEventListener('click', submitAssignment, false);
 	};
 
+
+	
+
 	function dividerClick(e){
 		var newDiv = document.createElement('div'),  // element to make resizable
 			resizer = document.createElement('div'),
