@@ -1,3 +1,5 @@
+
+
 .grid-header {
 	padding-top: 1em;
 	padding-left: 1em;
@@ -113,10 +115,34 @@ div > div.mdl-card__actions.mdl-card--border > a > i.md-48 {
 
 
 .mdl-chip-bank {
-	width: 90%;
 	min-height: 80px;
 	border-radius: 16px;
 	margin: 0 auto;
 	padding: 3px;
 	margin-bottom: 2em;
+
+}
+
+.width-eighty-percent {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.mdl-cell--center-align {
+	text-align: center;
+}
+
+
+#error_explanation > h2 {
+	font-size: 28px;
+	line-height: 28px;
+}
+
+#error_explanation > ul {
+	list-style-type: circle;
+}
+
+a.mdl-button--full-width {
+	width: 100%;
+	padding: 0;
 }

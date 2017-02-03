@@ -29,11 +29,28 @@ class CoursesController < ApplicationController
 	end
 
 	def show
+		@show = "is-active"
+		if current_user == @course.instructor
+			@isCourseInstructor = true
+		end
 		
 
 	end
 
 	def edit
+		@edit = "is-active"
+		if current_user == @course.instructor
+			@isCourseInstructor = true
+		end
+		render :show
+	end
+
+	def update
+		@course.assignments.destroy_all
+		assignmentsUpdate = JSON.parse params[:course][:assignments]
+		assignmentsUpdate.each do |id|
+			@course.assignments << Assignment.find(id)
+		end
 	end
 
 

@@ -18,9 +18,7 @@
         <span class="mdl-layout__title"><a href="<%= root_path %>" class="mdl-color-text--white mdl-link--no-styling">discendo</a></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <a class="mdl-navigation__link" href="<%= courses_path %>">My Courses</a>
-          <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
-          <a class="mdl-navigation__link" href="<%= edit_user_registration_path %>">My Account</a>
+          <%= link_to "Log Out", destroy_user_session_path, class: "mdl-navigation__link", method: :delete %>
         </nav>
       </div>
     </header>
@@ -38,5 +36,22 @@
       <%= yield %>
     </main>
   </div>
+
+
+
+
+  <% if @isCourseInstructor %>    
+    <%= render 'courses/assignment_selection_dialog' %>
+  <% end %>
+  
+
+  <% if @addCourseStudents %>
+    <%= render 'users/student_add_dialog' %>
+  <% end %>
+
+
+
+
+
   </body>
 </html>

@@ -1,4 +1,6 @@
 class AssignmentsController < ApplicationController
+	before_action :set_assignment, only: [:show, :edit, :update, :destroy, :remote_destroy]
+
 
 	def index
 		@assignment = Assignment.new
@@ -21,11 +23,19 @@ class AssignmentsController < ApplicationController
 	end
 
 	def edit
-		@assignment = Assignment.find params[:id]
+
 	end
 
+	def remote_destroy
+		if current_user == @assignment.instructor
+			@assignment.destroy
+		else
+			redirect_to root_path, alert: "You do not have permission to delete that assignment."
+		end
+	end
+
+
 	def destroy
-		@assignment = Assignment.find params[:id]
 		if current_user == @assignment.instructor
 			@assignment.destroy
 			redirect_to root_path, notice: "Assignment deleted"
@@ -79,4 +89,8 @@ class AssignmentsController < ApplicationController
 		def answer_params
 			params.require(:answers).permit!
 		end
+
+		def set_assignment
+	      @assignment = Assignment.find(params[:id])
+	    end
 end

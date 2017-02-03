@@ -1,0 +1,44 @@
+<div id="assignment-buffer"></div>
+
+<dialog id="c-a-dialog" class="mdl-dialog mdl-dialog--custom-c-a-dialog">
+  <h4 class="mdl-dialog__title">Select assignments to add</h4>
+  <div class="mdl-dialog__content mdl-grid content-width">
+   <div class="mdl-cell mdl-cell--6-col">
+    <h5>Assignments in this course:</h3>
+
+    <div class="mdl-color--deep-purple-100 mdl-chip-bank included-assignments--dialog">
+      <% @course.assignments.each do |a| %>
+        <div class="mdl-chip mdl-chip--deletable" data-assignment-id="<%= a.id %>">
+            <span class="mdl-chip__text"><%= a.name %></span>
+            <button type="button" class="mdl-chip__action"><i class="material-icons">cancel</i></button>
+        </div>
+      <% end %>
+
+    </div>
+
+   </div>
+   <div class="mdl-cell mdl-cell--6-col">
+    <h5>All other assignments:</h3>
+
+    <div class="mdl-color--blue-grey-100 mdl-chip-bank excluded-assignments">
+      <% current_user.assignments.each do |a| %>
+        <% if !@course.assignments.include?(a) %>
+          <div class="mdl-chip mdl-chip--deletable" data-assignment-id="<%= a.id %>">
+              <span class="mdl-chip__text"><%= a.name %></span>
+              <button type="button" class="mdl-chip__action"><i class="material-icons">control_point</i></button>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+
+   </div>
+  </div>
+  <div class="mdl-dialog__actions ">
+    <button type="button" class="mdl-button discard">Discard Changes</button>
+    <%= form_for @course, remote: true do |f| %>
+      <%= f.hidden_field :assignments, id: "updated-course-assignments" %>
+      <%= f.submit "Save Changes", class: "mdl-button save" %>
+    <% end %>
+  </div>
+</dialog>

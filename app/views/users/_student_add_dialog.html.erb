@@ -1,0 +1,22 @@
+
+<button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+
+
+<dialog id="s-a-dialog" class="mdl-dialog">
+  <h4 class="mdl-dialog__title">Add student to which courses?</h4>
+  <div class="mdl-dialog__content">
+    
+    <% current_user.courses_taught.each do |c| %>
+
+      <label class="mdl-checkbox mdl-js-checkbox">
+        <input type="checkbox" class="mdl-checkbox__input">
+        <span class="mdl-checkbox__label"><%= c.name %></span>
+      </label>
+
+    <% end %>
+  </div>
+  <div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button">Agree</button>
+    <button type="button" class="mdl-button close">Disagree</button>
+  </div>
+</dialog>

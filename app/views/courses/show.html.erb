@@ -1,17 +1,17 @@
-<% if current_user == @course.instructor %>
+<% if @isCourseInstructor %>
 	<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
 	  <div class="mdl-tabs__tab-bar">
-	      <a href="#instructor-panel" class="mdl-tabs__tab is-active">Edit Course</a>
-	      <a href="#student-panel" class="mdl-tabs__tab">Student View</a>
+	      <a href="#instructor-panel" class="mdl-tabs__tab <%= @edit %>">Edit Course</a>
+	      <a href="#student-panel" class="mdl-tabs__tab <%= @show %>">Student View</a>
 	  </div>
 
-	  <div class="mdl-tabs__panel is-active content-width" id="instructor-panel">
+	  <div class="mdl-tabs__panel content-width <%= @edit %>" id="instructor-panel">
 	
 		<%= render 'instructor_view' %>
 
 	  </div>
-	  <div class="mdl-tabs__panel content-width" id="student-panel">
-
+	  <div class="mdl-tabs__panel content-width <%= @show %>" id="student-panel">
+	  blah
 	  </div>
 	</div>
 <% else %>

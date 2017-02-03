@@ -1,6 +1,6 @@
 <div class="mdl-color--deep-purple-100">
 	<a class="mdl-link--no-styling" href="<%= courses_path %>"><h3 class='grid-header'>My Courses:</h3></a>
-	<div class="mdl-grid mdl-grid--custom-width">
+	<div class="mdl-grid mdl-grid--custom-width card-grid">
 		<% current_user.courses_taught.each do |c| %>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
 				<div class="mdl-card mdl-color--deep-purple mdl-shadow--2dp">
@@ -18,9 +18,9 @@
 				    <a href="<%= edit_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">build</i>
 				    </a>
-				    <a href="<%= delete_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
-				    	<i class="material-icons mdl-color-text--blue-grey-100">delete_forever</i>
-				    </a>
+				    <%= link_to raw(
+				    	"<i class='material-icons mdl-color-text--deep-purple-100'>delete_forever</i>"
+				    	), c, class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width remote-delete-card", method: :delete, remote: true %>
 
 				  </div>
 				</div>

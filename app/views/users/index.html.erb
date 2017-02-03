@@ -1,0 +1,20 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+      <a href="#student-panel" class="mdl-tabs__tab <%= @showStudents %>">Students</a>
+      <a href="#instructor-panel" class="mdl-tabs__tab <%= @showTeachers %>">Instructors</a>
+  </div>
+
+  <div class="mdl-tabs__panel content-width <%= @showStudents%>" id="student-panel">
+
+    <%= render 'students' %>
+
+
+
+  </div>
+  <div class="mdl-tabs__panel content-width <%= @showTeachers %>" id="instructor-panel">
+    <%= render 'teachers' %>
+  </div>
+</div>
+
+
+

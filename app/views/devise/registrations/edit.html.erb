@@ -1,43 +1,75 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="content-width mdl-color--blue-grey-100 padding-1">
+
+<h2>Edit <%= @user.username %>'s Profile</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class="mdl-grid">
+  
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--center-align">
+  
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.text_field :username, autofocus: true, class: "mdl-textfield__input" %>
+      <%= f.label :username, class: "mdl-textfield__label" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.email_field :email, autofocus: true, class: "mdl-textfield__input" %>
+      <%= f.label :email, class: "mdl-textfield__label" %>
+      <span class="mdl-textfield__error">Please include an @ in the email address.</span>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--center-align">
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.password_field :password, autocomplete: "off", class: "mdl-textfield__input", pattern: "^.{6,}$" %>
+      <label class="mdl-textfield__label" >Change Password</label>
+      <span class="mdl-textfield__error">Leave field blank if you don't want to change your password
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+      </span>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "mdl-textfield__input", pattern: "^.{5,}$" %>
+      <label class="mdl-textfield__label" >New Password Confirmation</label>
+      <span class="mdl-textfield__error">Leave field blank if you don't want to change your password</span>
+
+    </div>
+
   </div>
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--6-col-phone mdl-cell--6-col-tablet mdl-cell--center-align">
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.password_field :current_password, autocomplete: "off", class: "mdl-textfield__input" %>
+      <label class="mdl-textfield__label" >Current Password</label>
+
+
+    </div>
+
+    <div class="actions">
+
+
+      <%= f.submit "Update", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>
+    </div>
+  </div>
+</div> 
+
 <% end %>
 
 <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(@user), data: { confirm: "Are you sure?" }, method: :delete, class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: "mdl-link--no-styling" %>
+
+</div>

@@ -2,19 +2,25 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+resources :assignments
+resources :courses
+
 root 'home#index'
 
 get 'assignments/:id/take' => 'assignments#take', as: 'take_assignment'
 
-
 post '/assignments/:id' => 'assignments#enter_answers', as: 'enter_answers'
 
-resources :assignments
-resources :courses
+get 'assignments/:id/delete' => 'assignments#destroy', as: 'delete_assignment'
 
+delete 'assignments/:id/delete' => 'assignments#remote_destroy'
 
 get 'courses/:id/delete' => 'courses#destroy', as: 'delete_course'
 
-get 'assignments/:id/delete' => 'assignments#destroy', as: 'delete_assignment'
+get '/users' => 'users#index', as: 'users'
+
+get '/users/:id' => 'users#show', as: 'user'
+
+
 
 end
