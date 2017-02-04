@@ -9,8 +9,7 @@ class Assignment < ApplicationRecord
 
 	has_many :answers
 	belongs_to :instructor, class_name: 'User', foreign_key: 'user_id'
-	has_many :courses, through: :course_assignments
-	has_many :course_assignments
+	has_and_belongs_to_many :courses, join_table: 'course_assignments'
 	has_many :students, -> { distinct }, through: :answers, source: :user 
 
 	def createSubmissions hash, student_name, user

@@ -7,4 +7,6 @@ class UsersController < ApplicationController
 		@showStudents = params[:showStudents]
 	end
 
+	
+
 end

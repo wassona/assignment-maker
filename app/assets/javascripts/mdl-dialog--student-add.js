@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	      dialogPolyfill.registerDialog(dialog);
 	    }
 	    showDialogButtons.forEach(function(el){
-	    	el.addEventListener('click', function() {
+	    	el.addEventListener('click', function(e) {
+	     		document.querySelector('#student-id').value = e.currentTarget.getAttribute('data-student-id');
 	      		dialog.showModal();
 	      	});
 	    });
-	    dialog.querySelector('.close').addEventListener('click', function() {
+	    dialog.querySelector('.close').addEventListener('click', function(e) {
 	      dialog.close();
 	    });
 

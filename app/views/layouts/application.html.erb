@@ -18,7 +18,11 @@
         <span class="mdl-layout__title"><a href="<%= root_path %>" class="mdl-color-text--white mdl-link--no-styling">discendo</a></span>
         <div class="mdl-layout-spacer"></div>
         <nav class="mdl-navigation mdl-layout--large-screen-only">
-          <%= link_to "Log Out", destroy_user_session_path, class: "mdl-navigation__link", method: :delete %>
+          <% if current_user %>
+            <%= link_to "Log Out", destroy_user_session_path, class: "mdl-navigation__link", method: :delete %>
+          <% else %>
+            <%= link_to "Log In", new_user_session_path, class: "mdl-navigation__link", method: :get %>
+          <% end %>
         </nav>
       </div>
     </header>

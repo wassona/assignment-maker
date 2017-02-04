@@ -1,0 +1,32 @@
+wastebin
+
+
+<% current_user.courses_taught.each do |c| %>
+
+      <label class="mdl-checkbox mdl-js-checkbox">
+        <%= f.check_box c, class: "mdl-checkbox__input" %>
+        <span class="mdl-checkbox__label"><%= c.name %></span>
+      </label>
+
+    <% end %>
+
+
+
+
+
+      <%= collection_check_boxes :course, :id, current_user.courses_taught, :id, :name %>
+
+
+
+
+
+
+
+      <% current_user.courses_taught.each do |c| %>
+
+      <label class="mdl-checkbox mdl-js-checkbox">
+        <%= f.check_box :id, "fake" %>
+        <span class="mdl-checkbox__label"><%= c.name %></span>
+      </label>
+
+    <% end %>

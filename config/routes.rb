@@ -21,6 +21,8 @@ get '/users' => 'users#index', as: 'users'
 
 get '/users/:id' => 'users#show', as: 'user'
 
+post 'courses/add_students' => 'courses#add_students'
+
 
 
 end
