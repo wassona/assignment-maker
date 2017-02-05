@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
 				newLabel.style.top = div.top;
 				newLabel.className = 'auto-label';
 				newInput.className = 'auto-input';
+				newInput.addEventListener('keypress', function(event) {
+			        if (event.keyCode == 13) {
+			            event.preventDefault();
+			        }
+			    });
 				newInput.setAttribute('name', 'answers[' + index +']');
 
 				document.querySelector('#auto-label-wrapper').append(newLabel);

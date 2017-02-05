@@ -1,6 +1,6 @@
 <div class="mdl-color--deep-purple-100">
 	<h3 class='grid-header'>Students in this course:</h3>
-	<div class="mdl-grid mdl-grid--custom-width">
+	<div class="mdl-grid mdl-grid--custom-width card-grid">
 		<% @course.students.each do |c| %>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
 				<div class="mdl-card mdl-color--deep-purple mdl-shadow--2dp">
@@ -13,13 +13,13 @@
 				  </div>
 				  <div class="mdl-card__actions mdl-card--border">
 
-				    <a href="<%= course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    <a href="<%= user_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">find_in_page</i>
 				    </a>
-				    <a href="<%= edit_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    <a href="<%= course_student_path(@course, c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">build</i>
 				    </a>
-				    <a href="<%= delete_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    <a href="<%= remove_student_path(@course, c) %>" data-method="delete" data-remote="true" rel="nofollow" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width remote-delete-card">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">delete_forever</i>
 				    </a>
 

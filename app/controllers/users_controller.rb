@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 		@showStudents = params[:showStudents]
 	end
 
+	def show
+		@user = User.find params[:id]
+	end
+
 	
 
 end

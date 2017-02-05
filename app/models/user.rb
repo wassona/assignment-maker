@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
 
   has_many :courses_taught, class_name: 'Course', foreign_key: 'instructor_id'
-  has_and_belongs_to_many :courses_taken, class_name: 'Course', join_table: 'course_students'
+  has_and_belongs_to_many :courses_taken, -> { distinct }, class_name: 'Course', join_table: 'course_students'
   has_many :answers
 
 

@@ -21,7 +21,11 @@ get '/users' => 'users#index', as: 'users'
 
 get '/users/:id' => 'users#show', as: 'user'
 
-post 'courses/add_students' => 'courses#add_students'
+post '/courses/add_students' => 'courses#add_students'
+
+get '/courses/:id/course_student/:student_id' => 'courses#course_student', as: 'course_student'
+
+delete '/courses/:id/remove_student/:student_id' => 'courses#remove_student', as: 'remove_student'
 
 
 

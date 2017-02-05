@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-	before_action :set_course, only: [:show, :edit, :update, :destroy]
+	before_action :set_course, only: [:show, :edit, :update, :destroy, :course_student, :remove_student]
 
 	def index
 		@course = Course.new
@@ -62,6 +62,16 @@ class CoursesController < ApplicationController
 			student.courses_taken << Course.find(i)
 		end
 
+	end
+
+	def course_student
+		@student = User.find params[:student_id]
+	end
+
+	def remove_student
+		if current_user == @course.instructor
+			@course.students.destroy(User.find params[:student_id])
+		end
 	end
 
 	private
