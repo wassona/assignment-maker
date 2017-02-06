@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		let dialog = document.querySelector('#i-a-dialog');
 	    let showDialogButtons = document.querySelectorAll('.show-i-a-dialog');
-	    let closeDialogButtons = dialog.querySelectorAll('.close');
+	    let closeDialogButtons = dialog.querySelectorAll('.close-i-a');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }

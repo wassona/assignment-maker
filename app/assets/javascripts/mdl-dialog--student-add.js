@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		let dialog = document.querySelector('#s-a-dialog');
 	    let showDialogButtons = document.querySelectorAll('.show-s-a-dialog');
-	    let closeDialogButtons = dialog.querySelectorAll('.close');
+	    let closeDialogButtons = dialog.querySelectorAll('.close-s-a');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }
