@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		let dialog = document.querySelector('#s-a-dialog');
 	    let showDialogButtons = document.querySelectorAll('.show-s-a-dialog');
+	    let closeDialogButtons = dialog.querySelectorAll('.close');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	      		dialog.showModal();
 	      	});
 	    });
-	    dialog.querySelectorAll('.close-s-a').forEach(function(el){
+	    closeDialogButtons.forEach(function(el){
 	    	el.addEventListener('click', function(e) {
 	      		dialog.close();
 	      	});

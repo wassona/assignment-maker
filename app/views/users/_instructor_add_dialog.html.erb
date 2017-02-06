@@ -1,0 +1,40 @@
+<dialog id="i-a-dialog" class="mdl-dialog">
+  <h4 class="mdl-dialog__title">Join which courses?</h4>
+  <% @teachers.each do |t| %>
+  <div class="instructor-id" data-teacher-id="<%= t.id %>">
+  <%= form_tag '/courses/add_students', method: 'post', remote: true do %>
+
+  <div class="mdl-dialog__content">
+    <div  tabindex="1" ></div> <!-- this div fixes an annoying visual tab selection issue -->
+
+
+
+
+
+    
+    <% t.courses_taught.each do |c| %>
+
+      <label class="mdl-checkbox mdl-js-checkbox">
+        <input type="checkbox" name="courses[]" value="<%= c.id %>" class="mdl-checkbox__input" >
+        <span class="mdl-checkbox__label"><%= c.name %></span>
+      </label>
+
+    <% end %>
+
+    <input type="hidden" name="student_id" id="student-id" value="<%= current_user.id %>" >
+
+
+
+
+    </div>
+    <div class="mdl-dialog__actions  mdl-dialog__actions--full-width">
+        <%= submit_tag "Save Changes", class: "mdl-button save close" %>
+
+
+      <button type="button" class="mdl-button close">Discard Changes</button>
+    </div>
+    <% end %>
+    </div>
+    <% end %>
+
+</dialog>
