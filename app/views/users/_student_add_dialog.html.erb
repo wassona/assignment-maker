@@ -1,7 +1,3 @@
-
-
-
-
 <dialog id="s-a-dialog" class="mdl-dialog">
   <h4 class="mdl-dialog__title">Add student to which courses?</h4>
     <%= form_tag '/courses/add_students', method: 'post', remote: true do %>
@@ -30,10 +26,10 @@
 
   </div>
   <div class="mdl-dialog__actions  mdl-dialog__actions--full-width">
-      <%= submit_tag "Save Changes", class: "mdl-button save close" %>
+      <%= submit_tag "Save Changes", class: "mdl-button save close-s-a" %>
 
 
-    <button type="button" class="mdl-button close">Discard Changes</button>
+    <button type="button" class="mdl-button close-s-a">Discard Changes</button>
   </div>
     <% end %>
 

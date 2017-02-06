@@ -1,0 +1,33 @@
+<% @addCourse = true %>
+
+<% @teachers.each do |s| %>
+
+<div class="mdl-grid mdl-color--primary">
+  <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--blue-grey-100 mdl-cell--center-align"><span><%= s.username %></span></div>
+  <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--center-align">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center mdl-button--full-width show-a-c-dialog" data-student-id="<%= s.id %>">
+            <i class="material-icons md-48 mdl-color-text--deep-purple">group_add</i>
+            
+            <div class="add-course-dialog-storage none">
+              <% s.courses_taught.each do |c| %>
+
+                <label class="mdl-checkbox mdl-js-checkbox">
+                  <input type="checkbox" name="courses[]" value="<%= c.id %>" class="mdl-checkbox__input" >
+                  <span class="mdl-checkbox__label"><%= c.name %></span>
+                </label>
+
+              <% end %>
+            </div>
+    </a>
+    
+  </div>
+  <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--center-align">
+    <a href="<%= user_path(s) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center mdl-button--full-width">
+              <i class="material-icons mdl-color-text--deep-purple">find_in_page</i>
+    </a>
+  </div>
+</div>
+
+
+
+<% end %>

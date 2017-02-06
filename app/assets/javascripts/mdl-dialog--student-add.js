@@ -12,10 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	      		dialog.showModal();
 	      	});
 	    });
-	    dialog.querySelector('.close').addEventListener('click', function(e) {
-	      dialog.close();
+	    dialog.querySelectorAll('.close-s-a').forEach(function(el){
+	    	el.addEventListener('click', function(e) {
+	      		dialog.close();
+	      	});
 	    });
 
 
 	}
+
 });
