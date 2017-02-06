@@ -14,7 +14,6 @@ class AssignmentsController < ApplicationController
 
 	def create
 		@assignment = current_user.assignments.new(assignment_params)
-		
 		if @assignment.save!
 			render :edit, notice: "Assignment created!"
 		else
@@ -47,13 +46,15 @@ class AssignmentsController < ApplicationController
 	def take
 		@assignment = Assignment.find params[:id]
 
-		if current_user != @assignment.instructor
-			redirect_to root_path, alert: "You do not have access to that assignment."
+		if @assignment.alreadyAnswered? current_user
+			redirect_to root_path, alert: "You have already completed that assignment."
 		end
 	end
 
 	def show
 		@assignment = Assignment.find params[:id]
+		@courses = @assignment.courses
+
 		if @assignment.answers != []
 			@check_id = @assignment.answers.first.user.id
 		end

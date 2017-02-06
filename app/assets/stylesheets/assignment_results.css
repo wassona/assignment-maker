@@ -1,26 +1,14 @@
-.grid {
-	width: auto;
-	border: 1px solid black;
-	display: inline-block;
-	margin: 0 auto;
-	max-width: 100%;
-	white-space: nowrap;
-	overflow: scroll;
-	position: relative;
-}
-
-.row {
-	padding: 0px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-}
-
 .cell {
-	display: inline-block;
 	border-right: 1px solid black;
-	margin: 0 0;
-	padding: 6px;
-	width: 5em;
-	overflow: scroll;
-	height: 100%;
+
+
 }
+
+div.row {
+	flex-wrap: nowrap;
+}
+
+.grid {
+	overflow: scroll;
+}
+

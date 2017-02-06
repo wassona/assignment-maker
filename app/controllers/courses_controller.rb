@@ -65,6 +65,7 @@ class CoursesController < ApplicationController
 
 	def course_student
 		@student = User.find params[:student_id]
+		@course = Course.find params[:id]
 	end
 
 	def remove_student

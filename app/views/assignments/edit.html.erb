@@ -4,8 +4,15 @@
 	</script>
 <% end %>
 
+<div class="mdl-color--deep-purple-100 content-width">
 <%= form_for @assignment do |f| %>
-	<%= f.text_field :name, placeholder: @assignment.name %>
+	<div class="center fit-content padding-1">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+	      <%= f.text_field :name, placeholder: @assignment.name, autofocus: true, class: "mdl-textfield__input" %>
+	      <%= f.label :name, class: "mdl-textfield__label" %>
+	    </div>
+	</div>
+
 	<div id="image-wrapper" >
 		<div id="new-div-wrapper"></div>
 		<div id="assignment-divider-wrapper">
@@ -16,6 +23,7 @@
 		<img id="assignment-image" src="<%= @assignment.image.url(:regular) %>">
 	</div>
 	<%= f.hidden_field :label_data, id: "labelData" %>
-	<button id="assignment-submit-button" >Hello!</button>
+	<div class="padding-1 center fit-content">
+	<%= f.submit "Submit", id: "assignment-submit-button", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>
+	</div>
 <% end %>
-<div style="height: 200px"></div>

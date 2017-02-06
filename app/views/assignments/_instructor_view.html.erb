@@ -1,24 +1,36 @@
-<div class="grid">
-	<div class="row">
-		 <div class="cell">
-			Student:		
-		 </div>
-		 <% @assignment.answers.where(["user_id = ?", @check_id]).each_with_index do |a, i| %>
-			 <div class="cell">
-					Question <%= i + 1 %>
-				</div>
-	      <% end %>
-	</div>
-	<% @assignment.students.each do |s| %>
-		 <div class="row">
-			<div class="cell">
-					<%= s.email %>
-				</div>
-			 <% @assignment.answers.where(["user_id = ?", s.id]).each do |a| %>
-				 <div class="cell">
-					 <%= a.submission %>
-				 </div>
-			 <% end %>
-		 </div>
-	<% end %>
+<div class="mdl-color--blue-grey-100 content-width">
+<% @courses.each do |c| %>
+  <h4 class=""><%= link_to c.name, course_path(c), class: 'mdl-link--no-styling' %></h4>
+  <div class="mdl-color--primary grid">
+  <div class="mdl-grid mdl-color--primary row">
+    <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
+      <span>
+        Student Name:
+      </span>
+    </div>
+    <% @assignment.answers.where(["user_id = ?", @check_id]).each_with_index do |a, i| %>
+      <div class="mdl-cell mdl-cell--1-col mdl-cell--center-align cell">
+        Question <%= i + 1 %>
+      </div>
+    <% end %>
+  </div>
+  <% c.students.each do |s| %>
+    <div class="mdl-grid mdl-color--primary row">
+      <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
+        <span>
+          <%= link_to s.username, user_path(s), class: 'mdl-link--no-styling' %>
+        </span>
+      </div>
+      <% s.answers.where( assignment_id: @assignment.id ).each do |a| %>
+        <div class="mdl-cell mdl-cell--1-col mdl-cell--center-align cell">
+          <%= a.submission %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+
+</div>
+<% end %>
+
 </div>

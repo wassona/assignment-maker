@@ -3,9 +3,9 @@
 </script>
 
 
-<%= form_tag enter_answers_path do |f| %>
-	<%= @assignment.name %>
-	<input name="name" placeholder="Write your name here">
+<%= form_tag enter_answers_path do %>
+	<div class="mdl-color--blue-grey-100 content-width">
+	<h3 class="center fit-content padding-1"><%= @assignment.name %></h3>
 	<div id="image-wrapper" >
 		<div id="auto-label-wrapper">
 			<div id="new-div-wrapper"></div>
@@ -17,6 +17,9 @@
 			<img id="assignment-image" src="<%= @assignment.image.url(:regular) %>">
 		</div>
 	</div>
-	<button id="result-submit-button" >Submit!</button>
+	<div class="padding-1 center fit-content">
+		<%= submit_tag "Submit!", id: "result-submit-button", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>
+	</div>
+	</div>
 <% end %>
 <div style="height: 200px"></div>

@@ -1,0 +1,17 @@
+<div class="mdl-color--blue-grey-100 content-width">
+  <h4 class=""><%= link_to @student.username, user_path(@student), class: 'mdl-link--no-styling' %></h4>
+  <% @course.assignments.each do |assignment| %>
+  	<div class="mdl-grid mdl-color--primary row">
+    <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
+      <span>
+        <%= assignment.name %>
+      </span>
+    </div>
+    <% assignment.answers.where(["user_id = ?", @student.id]).each_with_index do |a, i| %>
+      <div class="mdl-cell mdl-cell--1-col mdl-cell--center-align cell">
+        <%= "#{i + 1}. #{a.submission}" %>
+      </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>

@@ -1,5 +1,9 @@
-<% if current_user = @assignment.instructor %>
-	<%= render 'instructor_view' %>
-<% else %>
-	<%= render 'student_view' %>
-<% end %>
+<div class="mdl-color--blue-grey-100 content-width">
+	<h3 class="grid-header"><%= @assignment.name %></h3>
+	<% if current_user = @assignment.instructor %>
+		<%= render 'instructor_view' %>
+	<% else %>
+		<%= render 'student_view' %>
+	<% end %>
+
+</div>

@@ -150,3 +150,11 @@ a.mdl-button--full-width {
 .display-none {
 	display: none;
 }
+
+.fit-content {
+	width: fit-content;
+}
+
+label.fit-content {
+	width: fit-content;
+}

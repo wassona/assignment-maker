@@ -26,14 +26,16 @@
         </nav>
       </div>
     </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout__title"><a href="<%= root_path %>" class="mdl-color-text--grey-600 mdl-link--no-styling">discendo</a></span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="<%= courses_path %>">My Courses</a>
-        <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
-        <a class="mdl-navigation__link" href="<%= edit_user_registration_path %>">My Account</a>
-      </nav>
-    </div>
+    <% if user_signed_in? %>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout__title"><a href="<%= root_path %>" class="mdl-color-text--grey-600 mdl-link--no-styling">discendo</a></span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="<% courses_path %>">My Courses</a>
+          <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
+          <a class="mdl-navigation__link" href="<%= edit_user_registration_path %>">My Account</a>
+        </nav>
+      </div>
+    <% end %>
     <main class="mdl-layout__content">
     	<p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
