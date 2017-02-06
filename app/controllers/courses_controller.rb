@@ -54,14 +54,13 @@ class CoursesController < ApplicationController
 	end
 
 	def add_students
-		puts 1
-		student = User.find(params[:student_id])
-		puts 2
-		params[:courses].each do |i|
-			puts i
-			student.courses_taken << Course.find(i)
-		end
 
+		student = User.find(params[:student_id])
+		if params[:courses]
+			params[:courses].each do |i|
+				student.courses_taken << Course.find(i)
+			end
+		end
 	end
 
 	def course_student
