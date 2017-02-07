@@ -76,12 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	function submitAssignment(){
 
-		let result = [];
+		var result = [];
 
 		function toPercent(h) {
 			return ((((parseFloat(h) / parseFloat(window.getComputedStyle(
 				document.getElementById('assignment-image')
-				).height))) * 100 ) + "%")
+				).height))) * 100 ) + "%");
 		}
 
 		document.querySelectorAll('.auto-label').forEach(function(div, index){
