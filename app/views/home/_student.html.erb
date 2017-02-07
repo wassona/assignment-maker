@@ -17,10 +17,10 @@
 				    <a href="<%= course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">find_in_page</i>
 				    </a>
-				  
-				    <a href="<%= delete_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
-				    	<i class="material-icons mdl-color-text--blue-grey-100">delete_forever</i>
-				    </a>
+
+				    <%= link_to raw(
+		            "<i class='material-icons mdl-color-text--blue-grey-100'>delete_forever</i>"
+		            ), unenroll_path(c), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2 remote-delete-card", method: 'post', remote: true %>
 
 				  </div>
 				</div>
