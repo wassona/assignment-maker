@@ -65,3 +65,5 @@ gem 'grim'
 
 gem 'devise'
 
+ruby "2.2.2"
+
