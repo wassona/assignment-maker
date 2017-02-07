@@ -5,6 +5,11 @@
     <%= devise_error_messages! %>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
+      <%= f.text_field :username, autofocus: true, class: "mdl-textfield__input" %>
+      <%= f.label :username, "Your name, as it will appear to other users", class: "mdl-textfield__label" %>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
       <%= f.email_field :email, autofocus: true, class: "mdl-textfield__input" %>
       <%= f.label :email, class: "mdl-textfield__label" %>
     </div>
@@ -20,6 +25,16 @@
       <%= f.label :password_confirmation, class: "mdl-textfield__label" %>
       <span class="mdl-textfield__error"><%= @minimum_password_length %> characters minimum</span>
     </div>
+
+    <label for="user_is_student" class="mdl-checkbox mdl-js-checkbox fit-content mdl-color-text--primary">
+      <%= f.check_box :is_student, class: "mdl-checkbox__input" %>
+      <span class="mdl-checkbox__label">I'm a student</span>
+    </label><br/>
+
+    <label for="user_is_teacher" class="mdl-checkbox mdl-js-checkbox fit-content mdl-color-text--primary">
+      <%= f.check_box :is_teacher, class: "mdl-checkbox__input" %>
+      <span class="mdl-checkbox__label">I'm a teacher</span>
+    </label>
 
     <div class="actions">
       <%= f.submit "Sign up", class: "mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" %>

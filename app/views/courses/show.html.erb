@@ -11,9 +11,11 @@
 
 	  </div>
 	  <div class="mdl-tabs__panel content-width <%= @show %>" id="student-panel">
-	  blah
+	  	<%= render 'student_view' %>
 	  </div>
 	</div>
 <% else %>
-	Boo!
+	<div class="mdl-tabs__panel content-width">
+		<%= render 'student_view' %>
+	</div>
 <% end %>

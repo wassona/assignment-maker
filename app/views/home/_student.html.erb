@@ -7,18 +7,18 @@
 				  <div class="mdl-card__title">
 				    <h4 class='mdl-color-text--blue-grey-100'>
 				      Course:<br>
-				      <%= c.name %>
+				      <%= c.name %><br>
+				      Instructor:<br>
+				      <%= c.instructor.username %>
 				    </h4>
 				  </div>
 				  <div class="mdl-card__actions mdl-card--border">
 
-				    <a href="<%= course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    <a href="<%= course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">find_in_page</i>
 				    </a>
-				    <a href="<%= edit_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
-				    	<i class="material-icons mdl-color-text--blue-grey-100">build</i>
-				    </a>
-				    <a href="<%= delete_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				  
+				    <a href="<%= delete_course_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
 				    	<i class="material-icons mdl-color-text--blue-grey-100">delete_forever</i>
 				    </a>
 
@@ -30,12 +30,12 @@
 			<div class="mdl-card mdl-shadow--2dp mdl-color--blue-grey">
 			  <div class="mdl-card__title">
 			    <h4 class="center mdl-color-text--deep-purple">
-			      Add New Course
+			      Enroll in New Course
 			    </h4>
 			  </div>
 			  <div class="mdl-card__actions mdl-card--border">
 			  	<br/>
-			    <a href="<%= new_course_path %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center">
+			    <a href="<%= courses_path %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center">
 			    	<i class="material-icons md-48 mdl-color-text--deep-purple">note_add</i>
 			    </a>
 
@@ -49,47 +49,32 @@
 <div class="mdl-color--blue-grey-100">
 	<h3 class="grid-header">My Assignments:</h3>
 	<div class="mdl-grid mdl-grid--custom-width">
-		<% current_user.assignments.each do |c| %>
+		<% current_user.courses_taken.each do |c| %>
+			<% c.assignments.each do |a| %>
 			<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
 				<div class="mdl-card mdl-color--blue-grey mdl-shadow--2dp">
 				  <div class="mdl-card__title">
 				    <h4 class='mdl-color-text--deep-purple-100'>
+				      Course:<br>
+				      <%= c.name %><br>
 				      Assignment:<br>
-				      <%= c.name %>
+				      <%= a.name %>
 				    </h4>
 				  </div>
 				  <div class="mdl-card__actions mdl-card--border">
 
-				    <a href="<%= assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
+				    <a href="<%= take_assignment_path(a) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
+				    	<i class="material-icons mdl-color-text--deep-purple-100">assignment</i>
+				    </a>
+				    <a href="<%= course_student_path(c, current_user) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
 				    	<i class="material-icons mdl-color-text--deep-purple-100">find_in_page</i>
-				    </a>
-				    <a href="<%= edit_assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
-				    	<i class="material-icons mdl-color-text--deep-purple-100">build</i>
-				    </a>
-				    <a href="<%= delete_assignment_path(c) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width">
-				    	<i class="material-icons mdl-color-text--deep-purple-100">delete_forever</i>
 				    </a>
 
 				  </div>
 				</div>
 			</div>
+			<% end %>
 		<% end %>
-		<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-			<div class="mdl-card mdl-shadow--2dp mdl-color--deep-purple">
-			  <div class="mdl-card__title">
-			    <h4 class="center mdl-color-text--blue-grey">
-			      Create New Assignment
-			    </h4>
-			  </div>
-			  <div class="mdl-card__actions mdl-card--border">
-			  	<br/>
-			    <a href="<%= new_assignment_path %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center">
-			    	<i class="material-icons md-48 mdl-color-text--blue-grey">note_add</i>
-			    </a>
-
-			    
-			  </div>
-			</div>
-		</div>
+		
 	</div> 
 </div>

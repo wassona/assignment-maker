@@ -11,5 +11,15 @@ class User < ApplicationRecord
 
 
   has_many :assignments
+
+  def panelFocus panel
+  	if self.is_teacher && panel == 'teacher'
+  		'is-active'
+  	elsif !self.is_teacher && self.is_student && panel == 'student'
+  		'is-active'
+  	elsif !self.is_teacher && !self.is_student && panel == 'account'
+  		'is-active'
+  	end
+  end
   
 end

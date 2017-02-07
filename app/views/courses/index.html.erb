@@ -1,17 +1,23 @@
-<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-  <div class="mdl-tabs__tab-bar">
-      <a href="#instructor-panel" class="mdl-tabs__tab is-active">Instructor View</a>
-      <a href="#student-panel" class="mdl-tabs__tab">Student View</a>
+<% if current_user.is_teacher? && current_user.is_student? %>
+  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+    <div class="mdl-tabs__tab-bar">
+        <a href="#instructor-panel" class="mdl-tabs__tab is-active">Instructor View</a>
+        <a href="#student-panel" class="mdl-tabs__tab">Student View</a>
+    </div>
+    <div class="mdl-tabs__panel content-width is-active" id="instructor-panel">
+      <%= render 'instructor_index' %>
+    </div>
+    <div class="mdl-tabs__panel content-width" id="student-panel">
+      <%= render 'student_index' %>
+    </div>
   </div>
-
-  <div class="mdl-tabs__panel content-width is-active" id="instructor-panel">
-  	<div class="mdl-color--blue-grey-100 small-tool-container" >
-		<%= render 'create' %>
-	</div>
-	<%= render 'course_card_display' %>
-
+<% elsif current_user.is_teacher? %>
+  <div class="content-width">
+    <%= render 'instructor_index' %>
   </div>
-  <div class="mdl-tabs__panel content-width" id="student-panel">
-
+<% elsif current_user.is_student? %>
+  <div class="content-width">
+    <%= render 'student_index' %>
   </div>
-</div>
+<% end %>
+

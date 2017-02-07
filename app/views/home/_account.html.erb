@@ -40,6 +40,19 @@
     </div>
   
   </div>
+
+  <div class="mdl-cell mdl-cell--12-col mdl-cell--6-col-phone mdl-cell--6-col-tablet mdl-cell--center-align">
+    <label for="user_is_student" class="mdl-checkbox mdl-js-checkbox fit-content mdl-color-text--primary">
+      <%= f.check_box :is_student, class: "mdl-checkbox__input" %>
+      <span class="mdl-checkbox__label">I'm a student</span>
+    </label><br/>
+
+    <label for="user_is_teacher" class="mdl-checkbox mdl-js-checkbox fit-content mdl-color-text--primary">
+      <%= f.check_box :is_teacher, class: "mdl-checkbox__input" %>
+      <span class="mdl-checkbox__label">I'm a teacher</span>
+    </label>
+  </div>
+
   <div class="mdl-cell mdl-cell--12-col mdl-cell--6-col-phone mdl-cell--6-col-tablet mdl-cell--center-align">
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label field">
@@ -47,6 +60,8 @@
       <%= f.label :current_password, class: "mdl-textfield__label" %>
 
     </div>
+
+
 
     <div class="actions">
 

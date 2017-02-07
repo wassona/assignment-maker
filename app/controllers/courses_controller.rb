@@ -1,8 +1,10 @@
 class CoursesController < ApplicationController
-	before_action :set_course, only: [:show, :edit, :update, :destroy, :course_student, :remove_student]
+	before_action :set_course, only: [:show, :edit, :update, :destroy, :course_student, :remove_student, :enroll, :unenroll]
 
 	def index
 		@course = Course.new
+		@courses = Course.all
+		@instructors = User.all.where( is_instructor: true )
 	end
 
 	def new
@@ -32,9 +34,7 @@ class CoursesController < ApplicationController
 		@show = "is-active"
 		if current_user == @course.instructor
 			@isCourseInstructor = true
-		end
-		
-
+		end	
 	end
 
 	def edit
@@ -61,6 +61,14 @@ class CoursesController < ApplicationController
 				student.courses_taken << Course.find(i)
 			end
 		end
+	end
+
+	def enroll
+		@course.students << current_user
+	end
+
+	def unenroll
+		@course.students.destroy current_user
 	end
 
 	def course_student

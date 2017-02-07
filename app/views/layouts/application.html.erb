@@ -30,9 +30,29 @@
       <div class="mdl-layout__drawer">
         <span class="mdl-layout__title"><a href="<%= root_path %>" class="mdl-color-text--grey-600 mdl-link--no-styling">discendo</a></span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="<% courses_path %>">My Courses</a>
-          <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
+
+          <% if current_user.is_student? || current_user.is_teacher? %>
+            <div class="submenu-wrapper">
+              <a class="mdl-navigation__link" href="<% courses_path %>">My Courses</a>
+              <div id="my-courses-dropdown" class="submenu">
+                <% current_user.courses_taught.each do |c| %>
+                  <%= link_to c.name, course_path(c), class: "mdl-navigation__link sublink" %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="submenu-wrapper">
+              <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
+              <div id="my-courses-dropdown" class="submenu">
+                <% current_user.assignments.each do |a| %>
+                  <%= link_to a.name, assignment_path(a), class: "mdl-navigation__link sublink" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+
           <a class="mdl-navigation__link" href="<%= edit_user_registration_path %>">My Account</a>
+
         </nav>
       </div>
     <% end %>

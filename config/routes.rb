@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -22,6 +22,10 @@ get '/users' => 'users#index', as: 'users'
 get '/users/:id' => 'users#show', as: 'user'
 
 post '/courses/add_students' => 'courses#add_students'
+
+post '/courses/:id/enroll' => 'courses#enroll', as: 'enroll'
+
+post '/courses/:id/unenroll' => 'courses#unenroll', as: 'unenroll'
 
 get '/courses/:id/course_student/:student_id' => 'courses#course_student', as: 'course_student'
 

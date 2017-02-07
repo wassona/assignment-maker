@@ -158,3 +158,26 @@ a.mdl-button--full-width {
 label.fit-content {
 	width: fit-content;
 }
+
+.sublink {
+	padding: 0 0 0 25% !important;
+
+}
+
+.submenu {
+	margin-top: -6px;
+	overflow: hidden;
+	height: 0;
+	transition: height .4s;
+
+}
+
+.submenu:hover {
+	overflow: scroll;
+}
+
+a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.mdl-button--custom-width-2 {
+	width: 48%;
+	min-width: 0;
+	padding: 0;
+}

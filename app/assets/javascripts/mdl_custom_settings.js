@@ -28,6 +28,18 @@ if (document.getElementById("uploadFile")) {
 	};
 };
 
+if (document.querySelector(".mdl-layout__drawer")) {
+	document.querySelectorAll(".submenu-wrapper").forEach(function(el){
+		el.addEventListener('mouseover', function(event){
+			var submenu = event.currentTarget.querySelector('.submenu');
+			submenu.style.height = "100px";
+			event.currentTarget.addEventListener('mouseout', function(e){
+				submenu.style.height = "0";
+			})
+		})
+	})
+}
+
 
 
 });
