@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	    }
 
 	    cADialog.querySelector('.save').addEventListener('click', function() {
-		    let includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children),
-		    	result = [];
+		    let includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children);
+		    let result = [];
 		    includedAssignments.forEach(function(el){
 		    	result.push(el.getAttribute('data-assignment-id'));
 		    });
