@@ -35,11 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 
 	    function removeAssignment(e){
-	    	// let assignmentId = e.currentTarget.getAttribute('data-assignment-id');
-
-	    	// document.querySelectorAll('[data-assignment-id=' + "'" + assignmentId + "'" + ']').forEach(function(el){
-	    	// 	el.remove();
-	    	// });
 
 	    	e.currentTarget.querySelector('i').textContent = 'control_point';
 	    	document.querySelector('.excluded-assignments').appendChild(e.currentTarget);
@@ -56,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	    }
 
 	    cADialog.querySelector('.save').addEventListener('click', function() {
-		    let includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children);
-		    let result = [];
+		    var includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children);
+		    var result = [];
 		    includedAssignments.forEach(function(el){
 		    	result.push(el.getAttribute('data-assignment-id'));
 		    });

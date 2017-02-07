@@ -1,13 +1,11 @@
-"use strict"
-
 
 document.addEventListener('DOMContentLoaded', function() {
 
 	if (document.querySelector('#i-a-dialog')){
 		
-		let dialog = document.querySelector('#i-a-dialog');
-	    let showDialogButtons = document.querySelectorAll('.show-i-a-dialog');
-	    let closeDialogButtons = dialog.querySelectorAll('.close-i-a');
+		var dialog = document.querySelector('#i-a-dialog');
+	    var showDialogButtons = document.querySelectorAll('.show-i-a-dialog');
+	    var closeDialogButtons = dialog.querySelectorAll('.close-i-a');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }
