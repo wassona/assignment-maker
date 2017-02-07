@@ -1,3 +1,6 @@
+"use strict"
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
 	if (document.querySelector('#i-a-dialog')){

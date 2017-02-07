@@ -1,10 +1,11 @@
+
 document.addEventListener('DOMContentLoaded', function() {
 	if (document.querySelector('#c-a-dialog')){
 		
 		// modal display, hide, and polyfill functions
 
-		let cADialog = document.querySelector('#c-a-dialog');  // ca is course assignments
-	    let showCADialogButton = document.querySelector('#show-c-a-dialog');
+		var cADialog = document.querySelector('#c-a-dialog');  // ca is course assignments
+	    var showCADialogButton = document.querySelector('#show-c-a-dialog');
 	    if (! cADialog.showModal) {
 	      dialogPolyfill.registerDialog(cADialog);
 	    }
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	    // ca specific code
 	    function attachDialogListeners(){
-		    let includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children),
+		    var includedAssignments = [].slice.call(document.querySelector('.included-assignments--dialog').children),
 		    	excludedAssignments = [].slice.call(document.querySelector('.excluded-assignments').children);
 
 		    	// [].slice.call turns the HTMLCollection into an array

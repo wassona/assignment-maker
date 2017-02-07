@@ -1,9 +1,11 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
 	if (document.querySelector('#s-a-dialog')){
 		
-		let dialog = document.querySelector('#s-a-dialog');
-	    let showDialogButtons = document.querySelectorAll('.show-s-a-dialog');
-	    let closeDialogButtons = dialog.querySelectorAll('.close-s-a');
+		var dialog = document.querySelector('#s-a-dialog');
+	    var showDialogButtons = document.querySelectorAll('.show-s-a-dialog');
+	    var closeDialogButtons = dialog.querySelectorAll('.close-s-a');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }

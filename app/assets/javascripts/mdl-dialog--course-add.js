@@ -1,16 +1,17 @@
+
 document.addEventListener('DOMContentLoaded', function() {
 
 	if (document.querySelector('#a-c-dialog')){
 		
-		let dialog = document.querySelector('#a-c-dialog');
-	    let showDialogButtons = document.querySelectorAll('.show-a-c-dialog');
+		var dialog = document.querySelector('#a-c-dialog');
+	    var showDialogButtons = document.querySelectorAll('.show-a-c-dialog');
 	    if (! dialog.showModal) {
 	      dialogPolyfill.registerDialog(dialog);
 	    }
 	    showDialogButtons.forEach(function(el){
 	    	el.addEventListener('click', function(e) {
-	    		let checkList = e.currentTarget.querySelector('.add-course-dialog-storage');
-	    		let placeholder = document.createElement('span')
+	    		var checkList = e.currentTarget.querySelector('.add-course-dialog-storage');
+	    		var placeholder = document.createElement('span')
 	    		placeholder.id = 'placeholder';
 	    		checkList.parentNode.insertBefore(placeholder, checkList);
 
@@ -21,9 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	    });
 	    dialog.querySelectorAll('.close-a-c').forEach(function(el){
 	    	el.addEventListener('click', function(e) {
-	    		let checkList = dialog.querySelector('.add-course-dialog-storage');
+	    		var checkList = dialog.querySelector('.add-course-dialog-storage');
 	    		checkList.classList = "add-course-dialog-storage none";
-	    		let placeholder = document.getElementById('placeholder');
+	    		var placeholder = document.getElementById('placeholder');
 	    		placeholder.parentNode.insertBefore(checkList, placeholder);
 	    		placeholder.remove();
 
