@@ -1,5 +1,6 @@
 <div class="mdl-color--blue-grey-100 content-width">
-  <h4 class=""><%= link_to @student.username, user_path(@student), class: 'mdl-link--no-styling' %></h4>
+  <h3 class="grid-header"><%= link_to "Course: #{@course.name}", course_path(@course), class: 'mdl-link--no-styling' %></h3>
+  <h4 class="grid-header"><%= link_to "Student: #{@student.username}", user_path(@student), class: 'mdl-link--no-styling' %></h4>
   <% @course.assignments.each do |assignment| %>
   	<div class="mdl-grid mdl-color--primary row">
     <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">

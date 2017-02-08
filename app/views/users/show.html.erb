@@ -1,0 +1,17 @@
+<% if @user.is_teacher? %>
+	<div class="small-tool-container mdl-color--deep-purple-100">
+		<h3><%= @user.username %></h3>
+		<h4>teaches:</h4>
+		<% @user.courses_taught.each do |c| %>
+			<h5><%= link_to c.name, course_path(c) %></h5>
+		<% end %>
+	</div>
+<% else %>
+	<div class="small-tool-container mdl-color--deep-purple-100">
+		<h3><%= @user.username %></h3>
+		<h4>is taking:</h4>
+		<% @user.courses_taken.each do |c| %>
+			<h5><%= link_to c.name, course_path(c) %></h5>
+		<% end %>
+	</div>
+<% end %>

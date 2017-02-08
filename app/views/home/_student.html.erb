@@ -46,35 +46,4 @@
 	</div> 
 </div>
 
-<div class="mdl-color--blue-grey-100">
-	<h3 class="grid-header">My Assignments:</h3>
-	<div class="mdl-grid mdl-grid--custom-width">
-		<% current_user.courses_taken.each do |c| %>
-			<% c.assignments.each do |a| %>
-			<div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-phone mdl-cell--4-col-tablet">
-				<div class="mdl-card mdl-color--blue-grey mdl-shadow--2dp">
-				  <div class="mdl-card__title">
-				    <h4 class='mdl-color-text--deep-purple-100'>
-				      Course:<br>
-				      <%= c.name %><br>
-				      Assignment:<br>
-				      <%= a.name %>
-				    </h4>
-				  </div>
-				  <div class="mdl-card__actions mdl-card--border">
-
-				    <a href="<%= take_assignment_path(a) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
-				    	<i class="material-icons mdl-color-text--deep-purple-100">assignment</i>
-				    </a>
-				    <a href="<%= course_student_path(c, current_user) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-width-2">
-				    	<i class="material-icons mdl-color-text--deep-purple-100">find_in_page</i>
-				    </a>
-
-				  </div>
-				</div>
-			</div>
-			<% end %>
-		<% end %>
-		
-	</div> 
-</div>
+<%= render '/assignments/student_assignment_card_display' %>

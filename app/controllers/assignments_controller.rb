@@ -52,8 +52,9 @@ class AssignmentsController < ApplicationController
 	end
 
 	def show
-		@assignment = Assignment.find params[:id]
 		@courses = @assignment.courses
+
+
 
 		if @assignment.answers != []
 			@check_id = @assignment.answers.first.user.id

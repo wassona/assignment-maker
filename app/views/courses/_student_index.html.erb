@@ -9,29 +9,7 @@
     </div>
 
     <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--center-align">
-      <% if current_user.courses_taken.include? c %>
-
-        <%= link_to raw(
-            "<i class='material-icons md-48 mdl-color-text--deep-purple'>delete_forever</i>"
-            ), unenroll_path(c), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--full-width unenroll", method: 'post', remote: true %>
-
-      <% else %>
-
-        <%= link_to raw(
-            "<i class='material-icons md-48 mdl-color-text--deep-purple'>group_add</i>"
-            ), enroll_path(c), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--full-width enroll", method: 'post', remote: true %>
-
-      <% end %>
-
-      <div class="enroll-unenroll display-none">
-        <%= link_to raw(
-                  "<i class='material-icons md-48 mdl-color-text--deep-purple'>delete_forever</i>"
-                  ), unenroll_path(c), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--full-width unenroll", method: 'post', remote: true %>
-
-        <%= link_to raw(
-                  "<i class='material-icons md-48 mdl-color-text--deep-purple'>group_add</i>"
-                  ), enroll_path(c), class: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--full-width enroll", method: 'post', remote: true %>
-      </div>
+      <%= render partial: 'enroll_unenroll_button', locals: { course: c } %>
 
     </div>
 

@@ -1,0 +1,31 @@
+<div class="submenu-wrapper">
+  <a class="mdl-navigation__link" href="<%= courses_path %>">My Courses</a>
+  <div id="my-courses-dropdown" class="submenu">
+    <% if current_user.is_teacher? %>
+      <% current_user.courses_taught.each do |c| %>
+        <%= link_to c.name, course_path(c), class: "mdl-navigation__link sublink" %>
+      <% end %>
+    <% else %>
+      <% current_user.courses_taken.each do |c| %>
+        <%= link_to c.name, course_path(c), class: "mdl-navigation__link sublink" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="submenu-wrapper">
+  <a class="mdl-navigation__link" href="<%= assignments_path %>">My Assignments</a>
+  <div id="my-courses-dropdown" class="submenu">
+    <% if current_user.is_teacher? %>
+      <% current_user.assignments.each do |a| %>
+        <%= link_to a.name, assignment_path(a), class: "mdl-navigation__link sublink" %>
+      <% end %>
+    <% else %>
+      <% current_user.courses_taken.each do |c| %>
+        <% c.assignments.each do |a| %>
+          <%= link_to a.name, assignment_path(a), class: "mdl-navigation__link sublink" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

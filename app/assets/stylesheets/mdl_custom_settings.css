@@ -1,9 +1,17 @@
 
 
 .grid-header {
-	padding-top: 1em;
-	padding-left: 1em;
+	padding: 0;
+	padding-top: 12px;
+	padding-left: 12px;
 	width: 100%;
+	margin: 0;
+}
+
+.grid-subheader {
+	padding-left: 12px;
+	width: 100%;
+	margin: 0;
 }
 
 .page-header {
@@ -26,10 +34,14 @@ div > div > div > div.mdl-card {
 
 
 
-a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.mdl-button--custom-width {
+a.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect.mdl-button--custom-width, .mdl-button--custom-width {
 	width: 31%;
 	min-width: 0;
 	padding: 0;
+}
+
+.mdl-button--fixed-width {
+	width: 135px;
 }
 
 div.mdl-card__actions.mdl-card--border > a.mdl-button--custom-center {
@@ -153,10 +165,13 @@ a.mdl-button--full-width {
 
 .fit-content {
 	width: fit-content;
+	max-width: 150px;
 }
 
 label.fit-content {
 	width: fit-content;
+	max-width: 150px;
+
 }
 
 .sublink {

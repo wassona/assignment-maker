@@ -1,4 +1,33 @@
 <div class="mdl-color--blue-grey-100">
-	<h3 class='page-header mdl-color-text--deep-purple'><%= @course.name %></h3>
-	<h4 class='padding-1 mdl-color-text--deep-purple'><%= @course.instructor.username %></h4>
+	<h3 class='grid-header mdl-color-text--deep-purple'><%= @course.name %></h3>
+	<h4 class='grid-subheader'>
+		<%= link_to @course.instructor.username, user_path(@course.instructor), class: "mdl-color-text--deep-purple mdl-link--no-styling" %>
+	</h4>
+	<div class="mdl-button--fixed-width">
+		<%= render partial: 'enroll_unenroll_button', locals: { course: @course } %>
+	</div>
+
+	<% @course.assignments.each do |a| %>
+	  <div class="mdl-grid mdl-color--primary">
+	    <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-color--blue-grey-100 mdl-cell--center-align"><span><%= a.name %></span></div>
+	   
+	    <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--center-align">
+	      <a href="<%= take_assignment_path(a) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center mdl-button--full-width">
+	                <i class="material-icons mdl-color-text--deep-purple">assignment</i>
+	      </a>
+	    </div>
+
+	    <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-cell--center-align">
+	      <a href="<%= course_student_path(@course, current_user) %>" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--custom-center mdl-button--full-width">
+	                <i class="material-icons mdl-color-text--deep-purple">find_in_page</i>
+	      </a>
+
+	    </div>
+
+	  </div>
+
+	  
+
+	<% end %>
+
 </div>	
