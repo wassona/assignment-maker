@@ -14,7 +14,7 @@
       </div>
     <% end %>
   </div>
-  <% c.students.each do |s| %>
+  <% c.students.where.not(id: c.instructor.id).each do |s| %>
     <div class="mdl-grid mdl-color--primary row">
       <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
         <span>

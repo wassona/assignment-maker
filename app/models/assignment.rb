@@ -34,6 +34,7 @@ class Assignment < ApplicationRecord
 		result
 	end
 
+
 	def alreadyAnswered? user
 		if user.answers.find_by assignment_id: self.id
 			true

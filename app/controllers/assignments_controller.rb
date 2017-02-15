@@ -63,9 +63,6 @@ class AssignmentsController < ApplicationController
 		if @assignment.answers != []
 			@check_id = @assignment.answers.first.user.id
 			@audit_answers = @assignment.auditAnswers
-			puts "auditAnswers puts"
-			puts @assignment.auditAnswers
-			puts
 		end
 	end
 
