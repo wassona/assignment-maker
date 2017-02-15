@@ -33,4 +33,34 @@
 </div>
 <% end %>
 
+<h4 class="">Auditing Students</h4>
+  <div class="mdl-color--primary grid">
+  <div class="mdl-grid mdl-color--primary row">
+    <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
+      <span>
+        Student Name:
+      </span>
+    </div>
+    <% @assignment.answers.where(["user_id = ?", @check_id]).each_with_index do |a, i| %>
+      <div class="mdl-cell mdl-cell--1-col mdl-cell--center-align cell">
+        Question <%= i + 1 %>
+      </div>
+    <% end %>
+  </div>
+  <% @audit_answers.each do |s| %>
+    <div class="mdl-grid mdl-color--primary row">
+      <div class="mdl-cell mdl-cell--2-col mdl-color--blue-grey-100 mdl-cell--center-align">
+        <span>
+          <%= s[0] %>
+        </span>
+      </div>
+      <% s[1].each do |a| %>
+        <div class="mdl-cell mdl-cell--1-col mdl-cell--center-align cell">
+            <%= a.submission %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+
 </div>

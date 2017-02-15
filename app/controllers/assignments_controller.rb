@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+	before_action :authenticate_user!, except: [:take, :enter_answers]
 	before_action :set_assignment, only: [:show, :edit, :update, :destroy, :remote_destroy]
 
 
@@ -17,7 +18,7 @@ class AssignmentsController < ApplicationController
 		if @assignment.save!
 			render :edit, notice: "Assignment created!"
 		else
-			render "/home/index"
+			render :new
 		end
 	end
 
@@ -45,9 +46,12 @@ class AssignmentsController < ApplicationController
 
 	def take
 		@assignment = Assignment.find params[:id]
-
-		if @assignment.alreadyAnswered? current_user
-			redirect_to root_path, alert: "You have already completed that assignment."
+		if user_signed_in?
+			if @assignment.alreadyAnswered? current_user
+				redirect_to request.referer || root_path, alert: "You have already completed that assignment."
+			end
+		else
+			@audit = true
 		end
 	end
 
@@ -58,6 +62,10 @@ class AssignmentsController < ApplicationController
 
 		if @assignment.answers != []
 			@check_id = @assignment.answers.first.user.id
+			@audit_answers = @assignment.auditAnswers
+			puts "auditAnswers puts"
+			puts @assignment.auditAnswers
+			puts
 		end
 	end
 
@@ -66,7 +74,7 @@ class AssignmentsController < ApplicationController
 		@assignment = Assignment.find params[:id]
 
 		if current_user == @assignment.instructor && @assignment.update(assignment_params)
-			redirect_to @assignment, notice: "Assignment created!"
+			redirect_to root_path, notice: "Assignment updated!"
 		else
 			render @assignment
 		end
@@ -76,9 +84,16 @@ class AssignmentsController < ApplicationController
 	def enter_answers
 		@assignment = Assignment.find params[:id]
 
-		@assignment.createSubmissions answer_params, params[:name], current_user
+		if user_signed_in?
+			@assignment.createSubmissions answer_params, current_user.username, current_user
+			redirect_to root_path
 
-		redirect_to root_path
+		else
+			@assignment.createSubmissions answer_params, params[:name], @assignment.instructor
+			redirect_to root_path
+
+		end
+
 
 	end
 

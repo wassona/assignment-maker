@@ -69,6 +69,10 @@ div > div.mdl-card__actions.mdl-card--border > a > i.md-48 {
 	margin: 0 auto;
 }
 
+.center-align {
+	text-align: center;
+}
+
 .center-button {
 	width: 40px;
 	margin: 0 auto;

@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  	before_action :authenticate_user!
 	before_action :set_course, only: [:show, :edit, :update, :destroy, :course_student, :remove_student, :enroll, :unenroll]
 
 	def index
@@ -15,7 +16,7 @@ class CoursesController < ApplicationController
 		@course = current_user.courses_taught.new course_params
 
 		if @course.save
-			redirect_to @course, notice: "Course created!"
+			redirect_to edit_course_path(@course), notice: "Course created!"
 		else
 			redirect_to request.referer || root_path, alert: "The course could not be created. Please try again."
 		end

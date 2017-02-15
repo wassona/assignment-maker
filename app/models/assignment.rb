@@ -22,6 +22,18 @@ class Assignment < ApplicationRecord
 		end
 	end
 
+	def auditAnswers
+		all = self.answers.where(["user_id = ?", self.instructor.id])
+		result = {}
+		all.each do |a|
+			if !result[a.student_name]
+				result[a.student_name] = []
+			end
+			result[a.student_name].push a
+		end
+		result
+	end
+
 	def alreadyAnswered? user
 		if user.answers.find_by assignment_id: self.id
 			true
