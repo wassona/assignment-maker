@@ -52,6 +52,7 @@
 .auto-label {
 	height: 5%;
 	width: 100%;
+	left: 0;
 	background-color: rgba(255,195,55,.2);
 	position: absolute;
 	z-index: 3;
